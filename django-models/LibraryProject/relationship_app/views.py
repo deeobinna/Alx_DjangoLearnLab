@@ -8,7 +8,7 @@ from .models import Book, Author
 def list_books(request):
     books = Book.objects.all()
     for book in books:
-        return render(request, 'relationship_app/book_list.html', {'books': books.title, 'author': book.author.name})
+        return render(request, 'relationship_app/list_books.html', {'books': books.title, 'author': book.author.name})
     
 #Create a class-based view in relationship_app/views.py that displays details for a specific library, listing all books available in that library.
 
