@@ -8,7 +8,7 @@ def books_in_library(library_name):
 
 #query all books by a specific author
 def books_by_author(author_name):
-    author = Author.objects.filter(name=author_name)
+    author = Book.objects.filter(name=author_name)
     return author.books.all()
     
 #retrieve the librarian for a library
