@@ -5,7 +5,7 @@ def create_sample_data():
     author = Author.objects.get(name='J.K. Rowling')
     
     #get all books in the library   
-    books = Book.objects.all()
+    books = Library.objects.get(name = "library_name").books.all()
     
     #retrieve the librarian for a library
     librarian = Librarian.objects.get(name='City Library')
