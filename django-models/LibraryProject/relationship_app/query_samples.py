@@ -7,7 +7,7 @@ def books_in_library(library_name):
     
 
 #query all books by a specific author
-def books_by_author(author_name):
+def books_by_author(author):
     author = Author.objects.filter(author=author)
     return author.books.all()
     
