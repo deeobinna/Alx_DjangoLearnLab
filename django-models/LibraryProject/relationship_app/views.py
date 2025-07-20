@@ -65,7 +65,7 @@ def register(request):
 
 
 @login_required
-@permission_required('relationship_app.add_book', raise_exception=True)
+@permission_required('relationship_app.can_add_book', raise_exception=True)
 def can_add_book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
