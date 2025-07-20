@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from .models import Library
 from .models import Book
 from .forms import BookForm
-from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from django.contrib.auth.decorators import  permission_required, user_passes_test, login_required
 
 
 def is_admin(user):
@@ -64,7 +64,7 @@ def register(request):
 
 @login_required
 @permission_required('relationship_app.add_book', raise_exception=True)
-def add_book(request):
+def can_add_book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
         if form.is_valid():
@@ -76,7 +76,7 @@ def add_book(request):
 
 @login_required
 @permission_required('relationship_app.can_change_book', raise_exception=True)
-def edit_book(request, pk):
+def can_change_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
@@ -89,7 +89,7 @@ def edit_book(request, pk):
 
 @login_required
 @permission_required('relationship_app.can_delete_book', raise_exception=True)
-def delete_book(request, pk):
+def can_delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
         book.delete()
