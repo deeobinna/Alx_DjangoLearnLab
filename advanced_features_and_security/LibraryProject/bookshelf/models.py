@@ -26,7 +26,7 @@ class CustomUser(AbstractUser):
     profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
     
     objects = CustomUserManager()   
-#create customUserManager
+
 
 
 
@@ -38,6 +38,17 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     publication_year = models.IntegerField()
+        
     
+    class Meta:
+        permissions = [
+            ("can_view", "Can view a book"),
+            ("can_edit", "Can edit a book"),
+            ("can_delete", "Can delete a book"),
+            ("can_create", "Can create a book"),
+        ]
+        
+        
     def __str__(self):
         return f'Book title: {self.title} by {self.author} ({self.publication_year})'
+    
